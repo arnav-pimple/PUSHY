@@ -1,0 +1,55 @@
+{
+  "name": "pushy",
+  "displayName": "PUSHY",
+  "description": "Motivates students to build a daily commit streak with automated Git commits.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Other",
+    "SCM Providers"
+  ],
+  "activationEvents": [
+    "workspaceContains:.git"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "pushy.toggleAutoCommit",
+        "title": "Toggle Auto Commit"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "PUSHY Configuration",
+      "properties": {
+        "pushy.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable auto-commit on startup"
+        },
+        "pushy.interval": {
+          "type": "number",
+          "default": 300,
+          "minimum": 30,
+          "description": "Auto-commit interval in seconds (minimum 30 seconds)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.101.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "eslint": "^9.25.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
